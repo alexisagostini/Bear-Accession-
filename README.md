@@ -1,8 +1,8 @@
-# start the bear project
+# Start the bear project
 
 Helped by IA Claude 
 
-## collect the information
+## Collect the information
 
 ### Reference Genome
 

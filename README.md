@@ -592,5 +592,42 @@ profiles {
         }
     }
 }
-``` 
+```
+
+i simply the code as much as i can
+
+```bash
+NCBI_API_KEY=855294aa6a5d0abb5c5286c6e93121a14908
+REF=/home/alexis/data/Ours/genome/REF_GENOME.fasta
+head $REF
+SRA=/home/alexis/data/Ours/SRA/SRA_all.txt
+head $SRA
+#Run nexflow pipeline
+nextflow run '/home/alexis/data/Ours/genomepanel_nf/main.nf' -config '/home/alexis/data/Ours/genomepanel_nf/nextflow.config' -profile slurm -work-dir '/scratch/nf_tmp' --outdir '/home/alexis/data/Ours/results' --NCBI-API-key $NCBI_API_KEY --reference $REF --reads $READS --SRA-index $SRA --ploidy 2
+module load genomepanel-nf
+```
+
+I took again the pipeline_nf with the original main.nf and the original nextflow.nf
+
+when its run error happened
+
+ERROR ~ No signature of method : java.lang.boolean.getfileSystem() is applicable for argument types  () values : []
+
+ -- Check '.nextflow.log' file for details
+
+This problem is now fixed i didn't put the good localisation of nextflow.log
+
+I have a new problem that is seems to comme from the permission:
+
+ERROR ~ Error executing process > 'variant _Calling:fastaindex'
+
+Caused by:
+java.io.FileNotFound
+Exeption:  /opt/easybuild/software/genomepanel-nf/1.0/singularity/..-singularity-samtools%3A1.22.1--h96c455f_0.img.lock (Permission denied)
+
+--Check '.nextflow.log' file for details
+
+
+
+
 ## VCF
